@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Borger3 from '../assets/image/Borger3.png';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Cart = ({ navigation }) => {
   return (
@@ -30,6 +31,7 @@ const Cart = ({ navigation }) => {
       
 
       {/* Item Details Section */}
+      <View style={{backgroundColor:'#F5F5F5',padding:10,borderRadius:20}}>
       <View style={styles.box1}>
       <View style={styles.detailsContainer}>
         <View>
@@ -55,14 +57,26 @@ const Cart = ({ navigation }) => {
       </View>
 
         {/* Delivery Address Section */}
+        <View style={{flexDirection: 'row', gap:10}}>
         <TouchableOpacity style={styles.deliveryContainer}>
           <Text style={styles.deliveryAddress}>Delivery Address</Text>
           <Text style={styles.deliveryLocation}>Dhaka, Bangladesh</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={{
+          backgroundColor: '#A9A6FF',
+          width:'20%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: 70,
+          marginVertical: 16,
+          borderRadius:20}}>
+            <Icon name="map" size={30} color="black" />
+         </TouchableOpacity>
+         </View>
 
         {/* Payment Method Section */}
         <View style={styles.paymentContainer}>
-          <Text style={styles.paymentMethod}>Payment Method</Text>
+          <Text style={styles.paymentMethod}>💳 Payment Method</Text>
           <TouchableOpacity style={styles.changeButton}>
             <Text style={styles.changeText}>Change</Text>
           </TouchableOpacity>
@@ -71,21 +85,35 @@ const Cart = ({ navigation }) => {
         {/* Checkout Summary Section */}
         <View style={styles.summaryContainer}>
           <Text style={styles.summaryTitle}>Checkout Summary</Text>
-          <Text style={styles.summaryItem}>Subtotal (2): $56</Text>
-          <Text style={styles.summaryItem}>Delivery Fee: $6.20</Text>
-          <Text style={styles.summaryTotal}>Payable Total: $62.20</Text>
+          <View style={styles.box1}>
+            <Text style={styles.summaryItem}>Subtotal (2)</Text>
+            <Text style={{color:'black',fontSize:18}}>$56</Text>
+          </View>
+          <View style={styles.box1}>
+            <Text style={styles.summaryItem}>Delivery Fee</Text>
+            <Text style={{color:'black',fontSize:18}}>$6.20</Text>
+          </View>
+          <View style={styles.box1}>
+            <Text style={styles.summaryTotal}>Payable Total</Text>
+            <Text style={{fontSize:20,fontWeight:'bold',color:'#4A43EC'}}>$62.20</Text>
+          </View>
         </View>
 
         {/* Confirm Order Button */}
         <TouchableOpacity style={styles.confirmButton}>
           <Text style={styles.confirmText}>Confirm Order</Text>
         </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
+
   );
 };
 
 const styles = StyleSheet.create({
+  row:{
+    flexDirection: 'row',
+  },
   box1:{
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -187,12 +215,12 @@ const styles = StyleSheet.create({
   },
   deliveryContainer: {
     backgroundColor: '#C0EADB',
-    width:'60%',
+    width:'70%',
     alignItems: 'left',
     justifyContent: 'center',
     height: 70,
     marginVertical: 16,
-    borderRadius:25
+    borderRadius:20
   },
   deliveryAddress: {
     paddingLeft:10,
@@ -214,10 +242,12 @@ const styles = StyleSheet.create({
     color: '#1E90FF',
   },
   paymentContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginVertical: 16,
   },
   paymentMethod: {
-    fontSize: 16,
+    fontSize: 25,
     fontWeight: 'bold',
     color: '#333',
   },
@@ -225,21 +255,21 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   summaryTitle: {
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: '#333',
   },
   summaryItem: {
-    fontSize: 14,
-    color: '#555',
+    fontSize: 20,
+    color: '#818181',
   },
   summaryTotal: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#333',
   },
   confirmButton: {
-    backgroundColor: '#1E90FF',
+    backgroundColor: '#4A43EC',
     padding: 16,
     borderRadius: 40,
     alignItems: 'center',

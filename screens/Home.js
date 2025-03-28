@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // Import the local images
@@ -24,16 +24,17 @@ const DATA = [
 
 const Home = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* Home Title */}
 
       {/* Header Section */}
       <View style={styles.header}>
-        <View>
-          <Text style={styles.greeting}>Hello 👋</Text>
-          <Text style={styles.user}>User</Text>
-        </View>
         <Image source={UserImage} style={styles.userImage} />
+        <View>
+        <Text style={{color:'#818181'}}>Your location</Text>
+        <Text>Savar, Dhaka</Text>
+        </View>
+        <Icon name="notifications" size={40} color="black" />
       </View>
 
       {/* Search Bar */}
@@ -83,7 +84,7 @@ const Home = ({ navigation }) => {
       {/* Popular Items using PopularItemsList */}
       <Text style={styles.exploreText}>Popular items</Text>
       <PopularItemsList data={DATA} />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -116,11 +117,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
+  
   header: {
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 20,
+    padding:20,
   },
   userImage: {
     width: 50,
